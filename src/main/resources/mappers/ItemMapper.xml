@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.home.dao.ItemMapper" >
+  <resultMap id="BaseResultMap" type="com.home.domain.Item" >
+    <id column="itemid" property="itemid" jdbcType="BIGINT" />
+    <result column="itemname" property="itemname" jdbcType="VARCHAR" />
+    <result column="itemdesc" property="itemdesc" jdbcType="VARCHAR" />
+    <result column="itemimageaddr" property="itemimageaddr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    itemid, itemname, itemdesc, itemimageaddr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.home.domain.ItemExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from iteminfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from iteminfo
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from iteminfo
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.home.domain.ItemExample" >
+    delete from iteminfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.home.domain.Item" >
+    insert into iteminfo (itemid, itemname, itemdesc, 
+      itemimageaddr)
+    values (#{itemid,jdbcType=BIGINT}, #{itemname,jdbcType=VARCHAR}, #{itemdesc,jdbcType=VARCHAR}, 
+      #{itemimageaddr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.home.domain.Item" >
+    insert into iteminfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        itemid,
+      </if>
+      <if test="itemname != null" >
+        itemname,
+      </if>
+      <if test="itemdesc != null" >
+        itemdesc,
+      </if>
+      <if test="itemimageaddr != null" >
+        itemimageaddr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemid != null" >
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="itemname != null" >
+        #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemdesc != null" >
+        #{itemdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemimageaddr != null" >
+        #{itemimageaddr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.home.domain.ItemExample" resultType="java.lang.Integer" >
+    select count(*) from iteminfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update iteminfo
+    <set >
+      <if test="record.itemid != null" >
+        itemid = #{record.itemid,jdbcType=BIGINT},
+      </if>
+      <if test="record.itemname != null" >
+        itemname = #{record.itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemdesc != null" >
+        itemdesc = #{record.itemdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemimageaddr != null" >
+        itemimageaddr = #{record.itemimageaddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update iteminfo
+    set itemid = #{record.itemid,jdbcType=BIGINT},
+      itemname = #{record.itemname,jdbcType=VARCHAR},
+      itemdesc = #{record.itemdesc,jdbcType=VARCHAR},
+      itemimageaddr = #{record.itemimageaddr,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.home.domain.Item" >
+    update iteminfo
+    <set >
+      <if test="itemname != null" >
+        itemname = #{itemname,jdbcType=VARCHAR},
+      </if>
+      <if test="itemdesc != null" >
+        itemdesc = #{itemdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemimageaddr != null" >
+        itemimageaddr = #{itemimageaddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.home.domain.Item" >
+    update iteminfo
+    set itemname = #{itemname,jdbcType=VARCHAR},
+      itemdesc = #{itemdesc,jdbcType=VARCHAR},
+      itemimageaddr = #{itemimageaddr,jdbcType=VARCHAR}
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </update>
+</mapper>
