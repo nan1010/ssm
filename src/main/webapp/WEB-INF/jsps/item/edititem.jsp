@@ -20,6 +20,7 @@ function submitImgSize1Upload(){
 			url:'${pageContext.request.contextPath}/upload/uploadpic.do',
 			dataType:'text',
 			data:{
+				
 				fileName : 'imgSize1File'
 			},
 			success:function(data){
@@ -30,7 +31,7 @@ function submitImgSize1Upload(){
 				//返回服务器图片路径，把图片路径设置给img标签
 				$("#imgSize1ImgSrc").attr("src",jsonObj.fullPath);
 				//数据库保存相对路径
-				$("#imgSize1").val(jsonObj.relativePath);
+				$("#itemimageaddr").val(jsonObj.relativePath);
 			}
 			
 		};
@@ -42,38 +43,33 @@ function submitImgSize1Upload(){
 
 </head>
 <body> 
-<form id="itemForm" action="${pageContext.request.contextPath }/upload/uploadpic.do" method="post" enctype="Multipart/form-data">
-<input type="hidden" name="id" value="${item.id }"/>
+<form id="itemForm" action="${pageContext.request.contextPath }/item/showitem.do" method="post" enctype="Multipart/form-data">
+<input type="hidden" name="id" value="${item.itemid }"/>
 修改商品信息：
 <table width="100%" border=1>
 <tr>
 	<td>商品ID</td>
-	<td><input type="text" name="itemid" value="${item.itemid }"/></td>
+	<td><input type="text" name="itemid" value="${item.itemid}"/>do not change! </td>
 </tr>
 <tr>
 	<td>商品名称</td>
-	<td><input type="text" name="itempname" value="${item.itemname }"/></td>
+	<td><input type="text" name="itemname" value="${item.itemname}"/></td>
 </tr>
 <tr>
 	<td>商品描述</td>
-	<td><input type="text" name="itemdesc" value="${item.itemdesc }"/></td>
+	<td><input type="text" name="itemdesc" value="${item.itemdesc}"/></td>
 </tr>
 <tr>
 	<td>商品图片</td>
 	<td>
-		<p><label></label>
-		<img id='imgSize1ImgSrc' src='{picPath}{item.itemimageaddr}'  height="100" width="100" />
+		<p><label></label>      
+		<img id='imgSize1ImgSrc'  src='${picPath}${item.itemimageaddr}'  height="100" width="100" />
 		<input type='file' id='imgSize1File' name='imgSize1File' class="file" onchange='submitImgSize1Upload()' /><span class="pos" id="imgSize1FileSpan">请上传图片的大小不超过3MB</span>
-        <input type='hidden' id='imgSize1' name='itemimageaddr' value='' reg="^.+$" tip="亲！您忘记上传图片了。" />
+        <input type='hidden' id='itemimageaddr' name='itemimageaddr' value='${item.itemimageaddr}' reg="^.+$" tip="亲！您忘记上传图片了。" />
 		</p>
 	</td>
 </tr>
-<tr>
-	<td>商品简介</td>
-	<td>
-	<textarea rows="3" cols="30" name="detail">${item.detail }</textarea>
-	</td>
-</tr>
+
 <tr>
 <td colspan="2" align="center"><input type="submit" value="提交"/>
 </td>

@@ -142,7 +142,7 @@
     </if>
   </select>
   <!-- 自己加的方法 -->
-  <select id="findAll" resultType="java.util.List">
+  <select id="findAll" resultMap="BaseResultMap">
   select *
   from iteminfo
   </select>

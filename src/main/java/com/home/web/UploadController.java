@@ -16,6 +16,8 @@ import java.util.Random;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,12 +26,17 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.home.domain.Item;
+import com.home.service.impl.ItemServiceImpl;
 import com.home.utils.Commons;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
 @RequestMapping("/upload")
 public class UploadController{
+	@Autowired
+	@Qualifier("itemServiceImpl")
+	ItemServiceImpl itemServiceImpl;
+	
 	//转到aditem页面
 	@RequestMapping("/toadd")
 	public String toAdd() {
