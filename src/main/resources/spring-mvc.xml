@@ -28,6 +28,9 @@
 	<bean 
 		id = "UploadController" name="UploadController" class = "com.home.web.UploadController">
 	</bean>
+	<bean 
+		id = "ItemController" name="ItemController" class = "com.home.web.ItemController">
+	</bean>
 	<!--可以配置多个处理器映射器 -->
 	<!-- 简单处理器映射器：把Url进行集中配置-->
 		 <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
@@ -35,6 +38,7 @@
 		 <props>
 		 <prop key="/controller.do">AllController</prop>
 		 <prop key="/upload.do">UploadController</prop>
+		 <prop key="/item.do">UploadController</prop>
 		 </props>
 		 </property>
 		 </bean>

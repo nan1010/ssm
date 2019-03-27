@@ -1,7 +1,9 @@
 package com.home.dao;
 
-import com.home.domain.User;
+import org.springframework.stereotype.Repository;
 
+import com.home.domain.User;
+@Repository(value="userMapper")
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userid);
 
@@ -15,9 +17,7 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
-	User findByUsername(String username);
-
-
-
-	
+	User findByUserName(String username);
+    
+    
 }

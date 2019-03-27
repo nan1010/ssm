@@ -141,6 +141,12 @@
       <include refid="Example_Where_Clause" />
     </if>
   </select>
+  <!-- 自己加的方法 -->
+  <select id="findAll" resultType="java.util.List">
+  select *
+  from iteminfo
+  </select>
+  
   <update id="updateByExampleSelective" parameterType="map" >
     update iteminfo
     <set >

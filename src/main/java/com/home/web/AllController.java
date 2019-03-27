@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +29,8 @@ import com.home.service.impl.UserServiceImpl;
 
 @RequestMapping(value = "/controller")
 public class AllController {
-	@Resource
+	@Autowired
+	@Qualifier("userServiceImpl")
 	private UserServiceImpl userServiceImpl;
 	//用户控制区
 	@RequestMapping("user/login")
@@ -42,7 +45,7 @@ public class AllController {
         
      @RequestMapping(value = "/login", method = RequestMethod.POST)
      public ModelAndView login(ModelAndView mav, HttpSession session, User user) {
-         User user1 = userServiceImpl.findByUsername(user.getUsername());
+         User user1 = userServiceImpl.findByUserName(user.getUsername());
 
          if (user == null || !user1.getPassword().equals(user.getPassword())) {
              return new ModelAndView("redirect:user/login.jsp");

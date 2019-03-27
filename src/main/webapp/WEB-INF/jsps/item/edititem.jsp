@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
-<c:set var="picPath" value="http://127.0.0.1:8003/ssmImage19"></c:set>
+<c:set var="picPath" value="http://localhost:8003/ssmimage"></c:set>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +17,7 @@ function submitImgSize1Upload(){
 	
 	var option={
 			type:'POST',
-			url:'${pageContext.request.contextPath}/upload/uploadPic.do',
+			url:'${pageContext.request.contextPath}/upload/uploadpic.do',
 			dataType:'text',
 			data:{
 				fileName : 'imgSize1File'
@@ -42,31 +42,30 @@ function submitImgSize1Upload(){
 
 </head>
 <body> 
-<form id="itemForm" action="${pageContext.request.contextPath }/upload/uploadpic.do" method="post">
+<form id="itemForm" action="${pageContext.request.contextPath }/upload/uploadpic.do" method="post" enctype="Multipart/form-data">
 <input type="hidden" name="id" value="${item.id }"/>
 修改商品信息：
 <table width="100%" border=1>
 <tr>
+	<td>商品ID</td>
+	<td><input type="text" name="itemid" value="${item.itemid }"/></td>
+</tr>
+<tr>
 	<td>商品名称</td>
-	<td><input type="text" name="name" value="${item.name }"/></td>
+	<td><input type="text" name="itempname" value="${item.itemname }"/></td>
 </tr>
 <tr>
-	<td>商品价格</td>
-	<td><input type="text" name="price" value="${item.price }"/></td>
-</tr>
-<tr>
-	<td>商品生产日期</td>
-	<td><input type="text" name="createtime" value="<fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>"/></td>
+	<td>商品描述</td>
+	<td><input type="text" name="itemdesc" value="${item.itemdesc }"/></td>
 </tr>
 <tr>
 	<td>商品图片</td>
 	<td>
 		<p><label></label>
-		<img id='imgSize1ImgSrc' src='${picPath }${item.pic }'  height="100" width="100" />
+		<img id='imgSize1ImgSrc' src='{picPath}{item.itemimageaddr}'  height="100" width="100" />
 		<input type='file' id='imgSize1File' name='imgSize1File' class="file" onchange='submitImgSize1Upload()' /><span class="pos" id="imgSize1FileSpan">请上传图片的大小不超过3MB</span>
-        <input type='hidden' id='imgSize1' name='pic' value='' reg="^.+$" tip="亲！您忘记上传图片了。" />
+        <input type='hidden' id='imgSize1' name='itemimageaddr' value='' reg="^.+$" tip="亲！您忘记上传图片了。" />
 		</p>
- 
 	</td>
 </tr>
 <tr>

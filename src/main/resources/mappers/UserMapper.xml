@@ -9,10 +9,6 @@
   <sql id="Base_Column_List" >
     userid, username, password
   </sql>
-  <!-- 自己定义的方法 -->
-  <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
-        SELECT * FROM userinfo WHERE username=#{username}
-    </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
@@ -72,4 +68,13 @@
       password = #{password,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=INTEGER}
   </update>
+  
+  
+  <!-- 自己写的方法 -->
+  <select id="findByUserName" parameterType="java.lang.String" resultType="com.home.domain.User">
+  select *
+  from userinfo
+  where username = #{username, jdbcType=VARCHAR}
+  </select>
+  
 </mapper>

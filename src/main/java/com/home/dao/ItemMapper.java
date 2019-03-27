@@ -4,7 +4,8 @@ import com.home.domain.Item;
 import com.home.domain.ItemExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-
+import org.springframework.stereotype.Repository;
+@Repository(value="itemMapper")
 public interface ItemMapper {
     int countByExample(ItemExample example);
 
@@ -27,4 +28,7 @@ public interface ItemMapper {
     int updateByPrimaryKeySelective(Item record);
 
     int updateByPrimaryKey(Item record);
+
+	List<Item> findAll();
+
 }

@@ -4,7 +4,8 @@ import com.home.domain.UserAndItem;
 import com.home.domain.UserAndItemExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-
+import org.springframework.stereotype.Repository;
+@Repository(value="userAndItemMapper")
 public interface UserAndItemMapper {
     int countByExample(UserAndItemExample example);
 
