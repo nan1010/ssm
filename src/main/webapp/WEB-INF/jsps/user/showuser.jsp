@@ -4,8 +4,33 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>主页</title>
+<style type="text/css">
+body {
+	background-image:url(${pageContext.request.contextPath}/images/timg.gif);
+	height:100%;
+	width:100%;
+	overflow: hidden;
+	background-size:cover;
+}
+ h1{
+ 	color:green;
+ 	font-size:35px;
+ 	position: relative;
+  	left: 450px;
+  	top: 200px;
+ }
+ h2{
+ 	color:yellow;
+ 	font-size:20px;
+ 	position: relative;
+  	left: 500px;
+  	top: 250px;
+ }
+</style>
 </head>
 <body>
-<h3>欢迎，${user.username}</h3>
+<h1>欢迎，${user.username}</h1>
+<h2><a href="${pageContext.request.contextPath }/item/tolist.do">进入购物商城</h2>
+<h2><a href="${pageContext.request.contextPath }/item/tolist.do">查看购物车</h2>
 </body>
 </html>

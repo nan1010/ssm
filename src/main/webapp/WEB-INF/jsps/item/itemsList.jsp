@@ -8,14 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>查询商品列表</title>
+<style type="text/css">
+</style>
 </head>
 <body> 
 <form action="${pageContext.request.contextPath }/items/deleteByIds.do" method="post">
-查询条件：
+搜索商品：
 <table width="100%" border=1>
 <tr>
-<td><input type="submit" value="查询"/></td>
-<td><input type="submit" value="批量删除"/></td>
+<td><input type="text" value="土豆"/></td>
 </tr>
 </table>
 商品列表：

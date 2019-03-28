@@ -26,7 +26,7 @@
 	<img id='imgSize1ImgSrc' src='${picPath }${item.itemimageaddr}'  height="300" width="300" />
 	</td>
 	<td>${item.itemdesc}</td>
-	<td><a href="${pageContext.request.contextPath }/item/finditembyid.do?itemid=${item.itemid}">修改</a>
+	<td><a href="${pageContext.request.contextPath }/item/tolist.do">返回商品表单页</a>
 	</td>
 
 </tr>
