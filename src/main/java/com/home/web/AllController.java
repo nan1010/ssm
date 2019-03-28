@@ -1,6 +1,7 @@
 package com.home.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,11 @@ import com.home.service.impl.UserServiceImpl;
 
 @RequestMapping(value = "/controller")
 public class AllController {
+	
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserServiceImpl userServiceImpl;
+	
 	//用户控制区
 	@RequestMapping("user/login")
 	public String userLogin() {
@@ -42,7 +46,37 @@ public class AllController {
 	public String userView() {
         return "user/showuser";
 	}
-        
+     
+	@RequestMapping("user/tosignin")
+	public String toSignin() {
+		return "user/signin";
+	}
+	
+	 @RequestMapping(value = "/signin", method = RequestMethod.POST)
+	 public ModelAndView signin(ModelAndView mav, HttpServletRequest request) {
+		 String username = request.getParameter("username");
+		 String password1 = request.getParameter("password1");
+		 String password2 = request.getParameter("password2");
+		 User user = new User();
+		 if(userServiceImpl.findByUserName(username) != null) {
+			 mav.addObject("username", username);
+			 mav.setViewName("user/signin");
+			 return mav;
+		 } else if(!password1.equals(password2)){ 
+			 mav.setViewName("user/signin");
+			 return mav;
+		 }else if(username == "" || password1 == "" || password2 == ""){
+			 mav.setViewName("user/signin");
+			 return mav;
+		 }else { 
+			 user.setUsername(request.getParameter("username"));
+			 user.setPassword((request.getParameter("password1")));
+			 userServiceImpl.insertUser(user);
+			 mav.setViewName("user/login");
+			 return mav;
+		 }
+		 
+	 }
      @RequestMapping(value = "/login", method = RequestMethod.POST)
      public ModelAndView login(ModelAndView mav, HttpSession session, User user) {
          User user1 = userServiceImpl.findByUserName(user.getUsername());
@@ -73,25 +107,6 @@ public class AllController {
      public @ResponseBody User requestPojo(User user) {
     	 return user;
      }
-   //商品控制区
-     //添加商品
-     @RequestMapping("item/add")
-     public String addItem(){
-    	 return "item/additem";
-     }
-     //显示商品
-     @RequestMapping("item/view")
-     public String showItem() {
-    	 return "item/showitem";
-     }
-     
-     
-     //上传图片的页面
-     @RequestMapping("item/viewimage")
-     public String showImage() {
-    	 return "item/addimage";
-     }
-     
      
      
 }

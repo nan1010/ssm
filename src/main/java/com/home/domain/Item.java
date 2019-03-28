@@ -1,11 +1,14 @@
 package com.home.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class Item implements Serializable {
     private Long itemid;
 
     private String itemname;
+
+    private BigDecimal itemprice;
 
     private String itemdesc;
 
@@ -27,6 +30,14 @@ public class Item implements Serializable {
 
     public void setItemname(String itemname) {
         this.itemname = itemname == null ? null : itemname.trim();
+    }
+
+    public BigDecimal getItemprice() {
+        return itemprice;
+    }
+
+    public void setItemprice(BigDecimal itemprice) {
+        this.itemprice = itemprice;
     }
 
     public String getItemdesc() {

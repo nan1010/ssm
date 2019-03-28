@@ -56,6 +56,10 @@ function submitImgSize1Upload(){
 	<td><input type="text" name="itemname" value="${item.itemname}"/></td>
 </tr>
 <tr>
+	<td>商品价格</td>
+	<td><input type="text" name="itemprice" value="${item.itemprice}"/></td>
+</tr>
+<tr>
 	<td>商品描述</td>
 	<td><input type="text" name="itemdesc" value="${item.itemdesc}"/></td>
 </tr>

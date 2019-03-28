@@ -12,19 +12,22 @@
 </style>
 </head>
 <body> 
-<form action="${pageContext.request.contextPath }/items/deleteByIds.do" method="post">
+<form action="${pageContext.request.contextPath }/item/finditembyname.do" method="post">
 搜索商品：
 <table width="100%" border=1>
 <tr>
-<td><input type="text" value="土豆"/></td>
+<td><input id="inputname" name="inputname" type="text" value="土豆"/></td><td><input type="submit" value="搜索"/></td>
+<td><a href="${pageContext.request.contextPath }/upload/toupload.do" class="button">上线新商品</a></td>
 </tr>
 </table>
+</form>
 商品列表：
 <table width="100%" border=1>
 <tr>
 	<td>复选框</td>
 	<td>ID</td>
 	<td>商品名称</td>
+	<td>商品价格</td>
 	<td>商品图片</td>
 	<td>商品描述</td>
 	<td>操作</td>
@@ -32,23 +35,22 @@
 <c:forEach items="${itemsList}" var="item">
 <tr>
 	<td>
-	<input type="checkbox" name="id" >
+	<input type="checkbox" name="id">
 	</td>
 	<td>${item.itemid}</td>
 	<td>${item.itemname}</td>
+	<td>${item.itemprice}</td>
 	<td>
 	<img id='imgSize1ImgSrc' src='${picPath}${item.itemimageaddr}'  height="100" width="100" />
 	</td>
 	<td>${item.itemdesc}</td>
-	<td><a href="${pageContext.request.contextPath }/item/finditembyid.do?itemid=${item.itemid}">修改</a>
-	<a href="${pageContext.request.contextPath }/items/deleteByID.do?itemid=${item.itemid}">删除</a>
+	<td><a href="${pageContext.request.contextPath }/item/finditembyid.do?itemid=${item.itemid}"><button>修改</button></a>
+	<a href="${pageContext.request.contextPath }/item/deleteByID.do?itemid=${item.itemid}"><button>删除</button></a>
 	</td>
-
+	
 </tr>
 </c:forEach>
-
 </table>
-</form>
 </body>
 
 </html>

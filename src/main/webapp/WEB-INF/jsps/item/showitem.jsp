@@ -16,12 +16,14 @@
 <tr>
 	<td>ID</td>
 	<td>商品名称</td>
+	<td>商品价格</td>
 	<td>商品图片</td>
 	<td>商品描述</td>
 </tr>
 <tr>
 	<td>${item.itemid}</td>
 	<td>${item.itemname}</td>
+	<td>${item.itemprice}</td>
 	<td>
 	<img id='imgSize1ImgSrc' src='${picPath }${item.itemimageaddr}'  height="300" width="300" />
 	</td>

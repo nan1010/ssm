@@ -12,4 +12,10 @@ public interface ItemService {
 
 	public abstract Item updateItemById(Item item);
 
+	public abstract void deleteItemById(long itemid);
+
+	public abstract Item findItemByName(String name);
+
+	public abstract void insertItem(Item item);
+
 }

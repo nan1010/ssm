@@ -1,34 +1,35 @@
 package com.home.dao;
 
 import com.home.domain.Item;
-import com.home.domain.ItemExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
-@Repository(value="itemMapper")
+
 public interface ItemMapper {
-    int countByExample(ItemExample example);
+   
 
-    int deleteByExample(ItemExample example);
+//    int deleteByPrimaryKey(Long itemid);
+//
+//    int insert(Item record);
+//
+//    int insertSelective(Item record);
+//
+//    Item selectByPrimaryKey(Long itemid);
+//
+//
+//    int updateByPrimaryKeySelective(Item record);
+//
+//    int updateByPrimaryKey(Item record);
 
-    int deleteByPrimaryKey(Long itemid);
+    //xml文件中还没有sql语句
+	public List<Item> findAll();
+	
+	public Item selectItemById(long itemid);
 
-    int insert(Item record);
+	public void updateById(Item item);
 
-    int insertSelective(Item record);
+	public void deleteItemById(long itemid);
 
-    List<Item> selectByExample(ItemExample example);
+	public Item selectItemByName(String itemname);
 
-    Item selectByPrimaryKey(Long itemid);
-
-    int updateByExampleSelective(@Param("record") Item record, @Param("example") ItemExample example);
-
-    int updateByExample(@Param("record") Item record, @Param("example") ItemExample example);
-
-    int updateByPrimaryKeySelective(Item record);
-
-    int updateByPrimaryKey(Item record);
-
-	List<Item> findAll();
-
+	public void insert(Item item);
 }

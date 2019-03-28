@@ -25,7 +25,15 @@ form{
  	color:blue;
  	font-size:35px;
  }
+ h2{
+ 	
+ 	font-size:20px;
+ 	position: relative;
+ 	left: 380px;
+    top: 300px;
+ }
 </style>
+
 </head>
 <body>
 
@@ -34,8 +42,10 @@ form{
 <input type="text" id="txtUsername" name="username" placeholder="请输入账号" /><br/>
 <label>密码：</label>
 <input type="password" id="txtPassword" name="password" placeholder="请输入密码" /><br/>
-<input type="submit" value="提交" />
+<input type="submit" value="登录" />
 <input type="reset" value="重置" />
 </form>
+<h2>没有账户？</h2>
+<h2><a href="${pageContext.request.contextPath }/controller/user/tosignin.do">注册</h2>
 </body>
 </html>

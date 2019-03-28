@@ -2,12 +2,16 @@ package com.home.domain;
 
 import java.io.Serializable;
 
+import com.home.enumm.Status;
+
 public class User implements Serializable {
     private Integer userid;
 
     private String username;
 
     private String password;
+
+    private Status userstatus;
 
     private static final long serialVersionUID = 1L;
 
@@ -34,4 +38,13 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
     }
+
+	public Status getUserstatus() {
+		return userstatus;
+	}
+
+	public void setUserstatus(Status userstatus) {
+		this.userstatus = userstatus;
+	}
+
 }

@@ -15,11 +15,16 @@ public class UserServiceImpl implements UserService{
 	@Autowired
     @Qualifier("userMapper")
 	private UserMapper userMapper;
+	
 	@Override
 	public User findByUserName(String username) {
 		// TODO Auto-generated method stub
 		User user = userMapper.findByUserName(username);
 		return user;
+	}
+	public void insertUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.insertUser(user);
 	}
 
 }

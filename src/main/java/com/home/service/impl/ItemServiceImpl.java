@@ -25,15 +25,40 @@ public class ItemServiceImpl implements ItemService{
 
 	public Item findItemById(long itemid) {
 		// TODO Auto-generated method stub
-		Item item = itemMapper.selectByPrimaryKey(itemid);
+		Item item = itemMapper.selectItemById(itemid);
+		return item;
+	}
+
+	
+	public Item updateItemById(Item item) {
+		// TODO Auto-generated method stub
+		 itemMapper.updateById(item);
+		Item item1 = itemMapper.selectItemById(item.getItemid());
+		return item1;
+	}
+
+	
+	public void deleteItemById(long itemid) {
+		// TODO Auto-generated method stub
+		itemMapper.deleteItemById(itemid);
+	}
+
+	
+	public Item findItemByName(String inputname) {
+		// TODO Auto-generated method stub
+		Item item = itemMapper.selectItemByName(inputname);
 		return item;
 	}
 
 	@Override
-	public Item updateItemById(Item item) {
+	public void insertItem(Item item) {
 		// TODO Auto-generated method stub
-		 itemMapper.updateByPrimaryKey(item);
-		Item item1 = itemMapper.selectByPrimaryKey(item.getItemid());
-		return item1;
+		itemMapper.insert(item);
 	}
+
+//	@Override
+//	public void insertItem(Item item) {
+//		// TODO Auto-generated method stub
+//		itemMapper.insert(item);
+//	}
 }
