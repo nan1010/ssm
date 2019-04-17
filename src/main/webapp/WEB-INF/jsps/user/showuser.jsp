@@ -6,7 +6,7 @@
 <title>主页</title>
 <style type="text/css">
 body {
-	background-image:url(${pageContext.request.contextPath}/images/timg.gif);
+	background-image:url(${pageContext.request.contextPath}/images/1.jpg);
 	height:100%;
 	width:100%;
 	overflow: hidden;
@@ -30,7 +30,7 @@ body {
 </head>
 <body>
 <h1>欢迎，${user.username}</h1>
-<h2><a href="${pageContext.request.contextPath }/item/tolist.do">进入购物商城</h2>
-<h2><a href="${pageContext.request.contextPath }/item/tolist.do">查看购物车</h2>
+<h2><a href="${pageContext.request.contextPath }/item/tolist.do" >进入购物商城</a></h2>
+<h2><a href="${pageContext.request.contextPath }/item/tolist.do" >查看购物车</a></h2>
 </body>
 </html>

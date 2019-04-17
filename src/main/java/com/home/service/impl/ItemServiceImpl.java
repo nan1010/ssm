@@ -22,28 +22,28 @@ public class ItemServiceImpl implements ItemService{
 		List<Item> items =  itemMapper.findAll();
 		return items ;
 	}
-
+	@Override
 	public Item findItemById(long itemid) {
 		// TODO Auto-generated method stub
-		Item item = itemMapper.selectItemById(itemid);
+		Item item = itemMapper.selectByPrimaryKey(itemid);
 		return item;
 	}
 
-	
+	@Override
 	public Item updateItemById(Item item) {
 		// TODO Auto-generated method stub
-		 itemMapper.updateById(item);
-		Item item1 = itemMapper.selectItemById(item.getItemid());
+		 itemMapper.updateByPrimaryKey(item);
+		Item item1 = itemMapper.selectByPrimaryKey(item.getItemid());
 		return item1;
 	}
 
-	
+	@Override
 	public void deleteItemById(long itemid) {
 		// TODO Auto-generated method stub
-		itemMapper.deleteItemById(itemid);
+		itemMapper.deleteByPrimaryKey(itemid);
 	}
 
-	
+	@Override
 	public Item findItemByName(String inputname) {
 		// TODO Auto-generated method stub
 		Item item = itemMapper.selectItemByName(inputname);

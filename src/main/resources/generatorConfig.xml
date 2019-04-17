@@ -32,7 +32,7 @@
                 targetProject="./src/main/java">  
                 <property name="enableSubPackages" value="true" />  
                 <!-- 从数据库返回的值被清理前后的空格 -->  
-                <property name="trimStrings" value="true" />  
+                <property name="trimStrings" value="false" />  
             </javaModelGenerator>  
   
             <!--对应的mapper.xml文件 -->  
@@ -54,9 +54,25 @@
                 enableDeleteByExample="false" enableSelectByExample="false"  
                 selectByExampleQueryId="false">  
                 <property name="useActualColumnNames" value="false" />  
-            </table>  
-            <table tableName="iteminfo" domainObjectName="Item"></table>
-			<table tableName="useritem" domainObjectName="UserAndItem"></table>
+            </table> 
+            <table tableName="iteminfo" domainObjectName="Item"  
+                enableCountByExample="false" enableUpdateByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false"  
+                selectByExampleQueryId="false">  
+                <property name="useActualColumnNames" value="false" />  
+            </table>   
+			<table tableName="newitem" domainObjectName="NewItem"  
+                enableCountByExample="false" enableUpdateByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false"  
+                selectByExampleQueryId="false">  
+                <property name="useActualColumnNames" value="false" />  
+            </table>
+            <table tableName="newitendetail" domainObjectName="NewItemDetail"  
+                enableCountByExample="false" enableUpdateByExample="false"  
+                enableDeleteByExample="false" enableSelectByExample="false"  
+                selectByExampleQueryId="false">  
+                <property name="useActualColumnNames" value="false" />  
+            </table>
             
         </context>  
     </generatorConfiguration>     

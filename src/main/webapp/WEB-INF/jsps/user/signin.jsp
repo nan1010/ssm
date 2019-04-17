@@ -5,6 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+	background-image:url(${pageContext.request.contextPath}/images/2.jpg);
+	height:100%;
+	width:100%;
+	overflow: hidden;
+	background-size:cover;
+}
+form{
+ 	
+ 	font-size:35px;
+ 	position: relative;
+  	left: 450px;
+  	top: 200px;
+  	}
+</style>
 <script type="text/javascript"></script>
 </head>
 <body>

@@ -6,7 +6,7 @@
 <title>登录</title>
 <style type="text/css">
 body {
-	background-image:url(${pageContext.request.contextPath}/images/timg.gif);
+	background-image:url(${pageContext.request.contextPath}/images/timg3.gif);
 	height:100%;
 	width:100%;
 	overflow: hidden;

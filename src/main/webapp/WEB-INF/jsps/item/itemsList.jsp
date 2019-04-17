@@ -47,7 +47,6 @@
 	<td><a href="${pageContext.request.contextPath }/item/finditembyid.do?itemid=${item.itemid}"><button>修改</button></a>
 	<a href="${pageContext.request.contextPath }/item/deleteByID.do?itemid=${item.itemid}"><button>删除</button></a>
 	</td>
-	
 </tr>
 </c:forEach>
 </table>

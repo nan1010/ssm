@@ -29,7 +29,7 @@ public class Item implements Serializable {
     }
 
     public void setItemname(String itemname) {
-        this.itemname = itemname == null ? null : itemname.trim();
+        this.itemname = itemname;
     }
 
     public BigDecimal getItemprice() {
@@ -45,7 +45,7 @@ public class Item implements Serializable {
     }
 
     public void setItemdesc(String itemdesc) {
-        this.itemdesc = itemdesc == null ? null : itemdesc.trim();
+        this.itemdesc = itemdesc;
     }
 
     public String getItemimageaddr() {
@@ -53,6 +53,6 @@ public class Item implements Serializable {
     }
 
     public void setItemimageaddr(String itemimageaddr) {
-        this.itemimageaddr = itemimageaddr == null ? null : itemimageaddr.trim();
+        this.itemimageaddr = itemimageaddr;
     }
 }

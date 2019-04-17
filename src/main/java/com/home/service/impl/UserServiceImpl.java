@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService{
 	}
 	public void insertUser(User user) {
 		// TODO Auto-generated method stub
-		userMapper.insertUser(user);
+		userMapper.insert(user);
 	}
 
 }

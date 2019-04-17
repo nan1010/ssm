@@ -1,35 +1,23 @@
 package com.home.dao;
 
-import com.home.domain.Item;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.home.domain.Item;
 
 public interface ItemMapper {
-   
+    int deleteByPrimaryKey(Long itemid);
 
-//    int deleteByPrimaryKey(Long itemid);
-//
-//    int insert(Item record);
-//
-//    int insertSelective(Item record);
-//
-//    Item selectByPrimaryKey(Long itemid);
-//
-//
-//    int updateByPrimaryKeySelective(Item record);
-//
-//    int updateByPrimaryKey(Item record);
+    int insert(Item record);
 
-    //xml文件中还没有sql语句
-	public List<Item> findAll();
-	
-	public Item selectItemById(long itemid);
+    int insertSelective(Item record);
 
-	public void updateById(Item item);
+    Item selectByPrimaryKey(Long itemid);
 
-	public void deleteItemById(long itemid);
+    int updateByPrimaryKeySelective(Item record);
 
-	public Item selectItemByName(String itemname);
+    int updateByPrimaryKey(Item record);
 
-	public void insert(Item item);
+	List<Item> findAll();
+
+	Item selectItemByName(String inputname);
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,12 +23,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.home.domain.Item;
+import com.home.domain.NewItem;
+import com.home.domain.NewItemWithBLOBs;
 import com.home.domain.User;
+import com.home.service.NewItemService;
+import com.home.service.impl.NewItemServiceImpl;
 import com.home.service.impl.UserServiceImpl;
 
 /*
  * 总控制器
  * */
+
+
+
 
 @RequestMapping(value = "/controller")
 public class AllController {
@@ -36,6 +45,53 @@ public class AllController {
 	@Qualifier("userServiceImpl")
 	private UserServiceImpl userServiceImpl;
 	
+	@Autowired
+	@Qualifier("newItemServiceImpl")
+	private NewItemService newItemService;
+	
+	
+	
+	//新加的
+		@RequestMapping("user/tonewindex")
+		public String toNewIndex() {
+			return "user/newindex";
+		}
+		
+		@RequestMapping("user/tonewproduct")
+		public String toNewProduct(Model model) {
+			List<NewItemWithBLOBs> list = newItemService.findAll();
+			model.addAttribute("newItemsList", list);
+			return "user/newproduct";
+		}
+
+		@RequestMapping("user/tonewitem")
+		public String toNewItem(ModelAndView mav, NewItem newItem) {
+			return "user/newitem";
+		}
+		@RequestMapping("user/findnewitemnbyname")
+		public String findNewItemByName(Model model, HttpServletRequest request) {
+			String newItemname = request.getParameter("newitemname");
+			NewItemWithBLOBs newItem = newItemService.findNewItemByName(newItemname);
+			model.addAttribute("newItem", newItem);
+			return "user/newitem";
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	//用户控制区
 	@RequestMapping("user/login")
 	public String userLogin() {
@@ -107,8 +163,6 @@ public class AllController {
      public @ResponseBody User requestPojo(User user) {
     	 return user;
      }
-     
-     
 }
 	
 

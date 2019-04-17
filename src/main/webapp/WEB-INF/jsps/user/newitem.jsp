@@ -1,0 +1,285 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<c:set var="picPath" value="http://localhost:8003/ssmimage/upload/"></c:set>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>公司网站</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        *.h:hover {
+            background-color: #328CC1
+        }
+
+        * {
+            line-height: 200%
+        }
+
+        body {
+            padding-top: 70px;
+            background-color: azure
+        }
+
+        .bg-bule {
+            background-color: rgb(91, 197, 247)
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            padding: .7em 1em;
+            color: #000000;
+            /* background-color: #f9f9f9 */
+        }
+
+        a:hover {
+            background-color: #328CC1;
+            color: #f9f9f9;
+            -webkit-transition: color .3s linear
+        }
+
+        nav a {
+            color: white
+        }
+    </style>
+</head>
+<body>
+<nav id="nav" class="navbar navbar-default navbar-fixed-top bg-bule">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="h"><a href="${pageContext.request.contextPath}/controller/user/tonewindex.do">首页</a></li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">产品中心 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="${pageContext.request.contextPath}/controller/user/tonewproduct.do">PCIe板卡产品</a></li>
+                            <li><a href="#">FMC板卡产品</a></li>
+                            <li><a href="#">以太网数据采集卡</a></li>
+                            <li><a href="#">VPX产品</a></li>
+                            <li><a href="#">射频产品</a></li>
+                            <li><a href="#">PCIe数据采集系统</a></li>
+                            <li><a href="#">高速图像类产品</a></li>
+                            <li><a href="#">测控软件开发</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">成功案例 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">超声</a></li>
+                            <li><a href="#">雷达</a></li>
+                            <li><a href="#">原子物理</a></li>
+                            <li><a href="#">电力局放</a></li>
+                            <li><a href="#">无线电</a></li>
+                            <li><a href="#">光电</a></li>
+                            <li><a href="#">质谱</a></li>
+                            <li><a href="#">光纤传感</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">行业与应用 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">超声</a></li>
+                            <li><a href="#">质谱</a></li>
+                            <li><a href="#">电力</a></li>
+                            <li><a href="#">气象</a></li>
+                            <li><a href="#">雷达</a></li>
+                            <li><a href="#">光纤传感</a></li>
+                            <li><a href="#">原子物理</a></li>
+                            <li><a href="#">无线电</a></li>
+                            <li><a href="#">光电</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">服务与支持 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">技术动态</a></li>
+                            <li><a href="#">常见问题</a></li>
+                            <li><a href="#">下载专区</a></li>
+                            <li><a href="#">坤驰百科</a></li>
+                            <li><a href="#">培训视频</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">关于坤驰 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">公司简介</a></li>
+                            <li><a href="#">团队风采</a></li>
+                            <li><a href="#">坤驰动态</a></li>
+                            <li><a href="#">发展历程</a></li>
+                            <li><a href="#">荣誉资质</a></li>
+                            <li><a href="#">产品检验流程</a></li>
+                            <li><a href="#">视频中心</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown h">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">联系我们 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">联系方式</a></li>
+                            <li><a href="#">人才招聘</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="text" class="form-control " placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">查询</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-3">
+                <h3>产品中心</h3>
+                <div class="list-group  ">
+                    <a href="category.html" class="list-group-item  ">PCLE板卡产品</a>
+                    <a href="category.html" class="list-group-item  ">FMC板卡产品</a>
+                    <a href="category.html" class="list-group-item  ">以太网数据采集</a>
+                    <a href="category.html" class="list-group-item  ">VPX产品</a>
+                    <a href="category.html" class="list-group-item  ">射频产品</a>
+                    <a href="category.html" class="list-group-item  ">PCLE数据采集</a>
+                    <a href="category.html" class="list-group-item  ">高速图像类产品</a>
+                    <a href="category.html" class="list-group-item  ">测控软件开发</a>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-9">
+
+                <div class="row">
+                    <div class="thumbnail col-md-4 col-md-offset-1">
+                    <!-- 插入图片！！！！！！！！！！！！ -->
+                    <!-- 图片的名称必须和对应商品的id相同 -->
+                        <img src='${picPath}${newItem.newitemid}.jpg' class="img-thumbnail" alt="">
+
+                    </div>
+                    <div class="col-md-6 col-md-offset-1 bg-info">
+                        <h4 class="lead"><a href="/products/item">${newItem.newitemname}</a></h4>
+                        <p>${newItem.newitemdesc}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                    data-toggle="tab">主要规格</a></li>
+                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab"
+                                    data-toggle="tab">客户价值</a></li>
+                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                    data-toggle="tab">应用领域</a></li>
+                        </ul>
+                        
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">                           
+                                <p>${newItem.zhuyaoguige}</p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="profile">
+                                <p>${newItem.kehujiazhi}</p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="messages">
+                                <p>${newItem.yingyonglingyu}</p>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="row"
+                    style='border: 0 solid transparent;margin: 20px 0; -moz-border-radius:100px;-webkit-border-radius:100px;border-radius:100px;width:100%;height:15px;background:whitesmoke'>
+                </div>
+                <div class="row">
+                    <div>
+                        <ul class="nav nav-pills nav-justified" style="background-color: rgb(91, 197, 247)"
+                            role="tablist">
+                            <li role="presentation" class="active"><a href="#gaishu" aria-controls="gaishu" role="tab"
+                                    data-toggle="tab">概述</a></li>
+                            <li role="presentation"><a href="#ruanjianzhichi" aria-controls="ruanjianzhichi" role="tab"
+                                    data-toggle="tab">软件支持</a></li>
+                            <li role="presentation"><a href="#FPGA" aria-controls="FPGA" role="tab"
+                                    data-toggle="tab">FPGA相关</a></li>
+                            <li role="presentation"><a href="#xiangguan" aria-controls="xiangguan" role="tab"
+                                    data-toggle="tab">相关产品</a></li>
+                            <li role="presentation"><a href="#yingyong" aria-controls="yingyong" role="tab"
+                                    data-toggle="tab">应用案例</a></li>
+                            <li role="presentation"><a href="#dinghuo" aria-controls="dinghuo" role="tab"
+                                    data-toggle="tab">订货信息</a></li>
+                        </ul>
+                         
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="gaishu">
+                                ${newItem.gaishu}
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="ruanjianzhichi">
+                                 ${newItem.ruanjianzhichi}                         
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="FPGA">
+                                 ${newItem.fpgaxiangguan}                                                     
+                            </div>
+                            <div role="tabpanel" class="tab-pane active" id="xiangguan">
+                                ${newItem.xiangguanchanpin}     
+                            </div>
+                            <div role="tabpanel" class="tab-pane active" id="yingyong">
+                                ${newItem.yingyonganli}                                  
+                            </div>
+                            <div role="tabpanel" class="tab-pane active" id="dinghuo">
+                                ${newItem.dinghuoxinxi}                                                                 
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <footer style="text-align:center;background-color: rgb(91, 197, 247)">
+        <br>
+
+        <div
+            style="display: block;margin: 0 auto;text-align:center;border-radius: 50px; padding: 10px auto; width: 800px;height: 200px; background-color:white">
+            <br>
+            <strong>北京坤驰科技有限公司</strong><br>
+            北京市海淀区上地信息路1号B栋金远见418室<br>
+            电话：(123) 010-82894332 <br>
+            E-mail：<a href="mailto:#">info@queentest.com</a> <br>
+            北京坤驰科技有限公司 版权所有 备案号:CP备09003324号-3
+            <br><br>
+        </div>
+        <br>
+    </footer>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.bootcss.com/holder/2.9.4/holder.js"></script>
+</body>
+</html>

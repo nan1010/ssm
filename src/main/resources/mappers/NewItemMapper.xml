@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.home.dao.NewItemMapper" >
+  <resultMap id="BaseResultMap" type="com.home.domain.NewItem" >
+    <id column="newitemid" property="newitemid" jdbcType="INTEGER" />
+    <result column="newitemkind" property="newitemkind" jdbcType="VARCHAR" />
+    <result column="newitemimage" property="newitemimage" jdbcType="VARCHAR" />
+    <result column="newitemname" property="newitemname" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.home.domain.NewItemWithBLOBs" extends="BaseResultMap" >
+    <result column="newitemdesc" property="newitemdesc" jdbcType="LONGVARCHAR" />
+    <result column="zhuyaoguige" property="zhuyaoguige" jdbcType="LONGVARCHAR" />
+    <result column="kehujiazhi" property="kehujiazhi" jdbcType="LONGVARCHAR" />
+    <result column="yingyonglingyu" property="yingyonglingyu" jdbcType="LONGVARCHAR" />
+    <result column="gaishu" property="gaishu" jdbcType="LONGVARCHAR" />
+    <result column="ruanjianzhichi" property="ruanjianzhichi" jdbcType="LONGVARCHAR" />
+    <result column="FPGAxiangguan" property="fpgaxiangguan" jdbcType="LONGVARCHAR" />
+    <result column="xiangguanchanpin" property="xiangguanchanpin" jdbcType="LONGVARCHAR" />
+    <result column="yingyonganli" property="yingyonganli" jdbcType="LONGVARCHAR" />
+    <result column="dinghuoxinxi" property="dinghuoxinxi" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    newitemid, newitemkind, newitemimage, newitemname
+  </sql>
+  <sql id="Blob_Column_List" >
+    newitemdesc, zhuyaoguige, kehujiazhi, yingyonglingyu, gaishu, ruanjianzhichi, FPGAxiangguan, 
+    xiangguanchanpin, yingyonganli, dinghuoxinxi
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from newitem
+    where newitemid = #{newitemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newitem
+    where newitemid = #{newitemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.home.domain.NewItemWithBLOBs" >
+    insert into newitem (newitemid, newitemkind, newitemimage, 
+      newitemname, newitemdesc, zhuyaoguige, 
+      kehujiazhi, yingyonglingyu, gaishu, 
+      ruanjianzhichi, FPGAxiangguan, 
+      xiangguanchanpin, yingyonganli, 
+      dinghuoxinxi)
+    values (#{newitemid,jdbcType=INTEGER}, #{newitemkind,jdbcType=VARCHAR}, #{newitemimage,jdbcType=VARCHAR}, 
+      #{newitemname,jdbcType=VARCHAR}, #{newitemdesc,jdbcType=LONGVARCHAR}, #{zhuyaoguige,jdbcType=LONGVARCHAR}, 
+      #{kehujiazhi,jdbcType=LONGVARCHAR}, #{yingyonglingyu,jdbcType=LONGVARCHAR}, #{gaishu,jdbcType=LONGVARCHAR}, 
+      #{ruanjianzhichi,jdbcType=LONGVARCHAR}, #{fpgaxiangguan,jdbcType=LONGVARCHAR}, 
+      #{xiangguanchanpin,jdbcType=LONGVARCHAR}, #{yingyonganli,jdbcType=LONGVARCHAR}, 
+      #{dinghuoxinxi,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.home.domain.NewItemWithBLOBs" >
+    insert into newitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="newitemid != null" >
+        newitemid,
+      </if>
+      <if test="newitemkind != null" >
+        newitemkind,
+      </if>
+      <if test="newitemimage != null" >
+        newitemimage,
+      </if>
+      <if test="newitemname != null" >
+        newitemname,
+      </if>
+      <if test="newitemdesc != null" >
+        newitemdesc,
+      </if>
+      <if test="zhuyaoguige != null" >
+        zhuyaoguige,
+      </if>
+      <if test="kehujiazhi != null" >
+        kehujiazhi,
+      </if>
+      <if test="yingyonglingyu != null" >
+        yingyonglingyu,
+      </if>
+      <if test="gaishu != null" >
+        gaishu,
+      </if>
+      <if test="ruanjianzhichi != null" >
+        ruanjianzhichi,
+      </if>
+      <if test="fpgaxiangguan != null" >
+        FPGAxiangguan,
+      </if>
+      <if test="xiangguanchanpin != null" >
+        xiangguanchanpin,
+      </if>
+      <if test="yingyonganli != null" >
+        yingyonganli,
+      </if>
+      <if test="dinghuoxinxi != null" >
+        dinghuoxinxi,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="newitemid != null" >
+        #{newitemid,jdbcType=INTEGER},
+      </if>
+      <if test="newitemkind != null" >
+        #{newitemkind,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemimage != null" >
+        #{newitemimage,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemname != null" >
+        #{newitemname,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemdesc != null" >
+        #{newitemdesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zhuyaoguige != null" >
+        #{zhuyaoguige,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="kehujiazhi != null" >
+        #{kehujiazhi,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yingyonglingyu != null" >
+        #{yingyonglingyu,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gaishu != null" >
+        #{gaishu,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ruanjianzhichi != null" >
+        #{ruanjianzhichi,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fpgaxiangguan != null" >
+        #{fpgaxiangguan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xiangguanchanpin != null" >
+        #{xiangguanchanpin,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yingyonganli != null" >
+        #{yingyonganli,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dinghuoxinxi != null" >
+        #{dinghuoxinxi,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.home.domain.NewItemWithBLOBs" >
+    update newitem
+    <set >
+      <if test="newitemkind != null" >
+        newitemkind = #{newitemkind,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemimage != null" >
+        newitemimage = #{newitemimage,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemname != null" >
+        newitemname = #{newitemname,jdbcType=VARCHAR},
+      </if>
+      <if test="newitemdesc != null" >
+        newitemdesc = #{newitemdesc,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="zhuyaoguige != null" >
+        zhuyaoguige = #{zhuyaoguige,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="kehujiazhi != null" >
+        kehujiazhi = #{kehujiazhi,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yingyonglingyu != null" >
+        yingyonglingyu = #{yingyonglingyu,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gaishu != null" >
+        gaishu = #{gaishu,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ruanjianzhichi != null" >
+        ruanjianzhichi = #{ruanjianzhichi,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fpgaxiangguan != null" >
+        FPGAxiangguan = #{fpgaxiangguan,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="xiangguanchanpin != null" >
+        xiangguanchanpin = #{xiangguanchanpin,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="yingyonganli != null" >
+        yingyonganli = #{yingyonganli,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="dinghuoxinxi != null" >
+        dinghuoxinxi = #{dinghuoxinxi,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where newitemid = #{newitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.home.domain.NewItemWithBLOBs" >
+    update newitem
+    set newitemkind = #{newitemkind,jdbcType=VARCHAR},
+      newitemimage = #{newitemimage,jdbcType=VARCHAR},
+      newitemname = #{newitemname,jdbcType=VARCHAR},
+      newitemdesc = #{newitemdesc,jdbcType=LONGVARCHAR},
+      zhuyaoguige = #{zhuyaoguige,jdbcType=LONGVARCHAR},
+      kehujiazhi = #{kehujiazhi,jdbcType=LONGVARCHAR},
+      yingyonglingyu = #{yingyonglingyu,jdbcType=LONGVARCHAR},
+      gaishu = #{gaishu,jdbcType=LONGVARCHAR},
+      ruanjianzhichi = #{ruanjianzhichi,jdbcType=LONGVARCHAR},
+      FPGAxiangguan = #{fpgaxiangguan,jdbcType=LONGVARCHAR},
+      xiangguanchanpin = #{xiangguanchanpin,jdbcType=LONGVARCHAR},
+      yingyonganli = #{yingyonganli,jdbcType=LONGVARCHAR},
+      dinghuoxinxi = #{dinghuoxinxi,jdbcType=LONGVARCHAR}
+    where newitemid = #{newitemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.home.domain.NewItem" >
+    update newitem
+    set newitemkind = #{newitemkind,jdbcType=VARCHAR},
+      newitemimage = #{newitemimage,jdbcType=VARCHAR},
+      newitemname = #{newitemname,jdbcType=VARCHAR}
+    where newitemid = #{newitemid,jdbcType=INTEGER}
+  </update>
+  
+  
+  <!-- 自己加的 -->
+ <select id="findAll" resultMap="ResultMapWithBLOBs">
+  select *
+  from newitem
+  </select>
+<select id="findNewItemByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+	select *
+	from newitem
+	where  newitemname = #{newitemname,jdbcType=VARCHAR}
+</select>
+</mapper>

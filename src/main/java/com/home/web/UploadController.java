@@ -76,9 +76,6 @@ public class UploadController{
 	//上传
 	resource.put(String.class, fbytes);
 	
-
-    
-	
 	//图片需要回显，需要服务器图片全路径
 	//数据库要保存数据，需要相对路径
 	String fullPath = Commons.PIC_HOST + "/upload/" + newFileName + suffix;
@@ -89,12 +86,7 @@ public class UploadController{
 	
 	out.print(result);
 	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/uploadpic2")
 	
 	    public String updateThumb(@RequestParam("name") String name,
