@@ -50,7 +50,8 @@ public class NewItemWithBLOBs extends NewItem implements Serializable {
     }
 
     public String getYingyonglingyu() {
-        return yingyonglingyu;
+    	//目前并没有什么用
+        return yingyonglingyu.replaceAll("\r\n","<br>");
     }
 
     public void setYingyonglingyu(String yingyonglingyu) {

@@ -72,7 +72,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                             aria-expanded="false">产品中心 <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/products">PCIe板卡产品</a></li>
+                            <li><a href="${pageContext.request.contextPath}/controller/user/tonewproduct.do">PCIe板卡产品</a></li>
                             <li><a href="#">FMC板卡产品</a></li>
                             <li><a href="#">以太网数据采集卡</a></li>
                             <li><a href="#">VPX产品</a></li>
